@@ -12,7 +12,7 @@ $ npm install graphql-sql
 
 ### Quickstart
 
-```
+```js
 require('graphql-sql');
 
 //your graphql services endpoint
@@ -26,7 +26,7 @@ new ocs.GQLService().query().select(['id','name']).from('getProduct').where({id:
 
 ### Preview graphql query
 
-```
+```js
 require('graphql-sql');
 
 console.log(new ocs.GQLService().query().select(['id','name']).from('getProduct').where({id:1}).toString());
@@ -42,7 +42,7 @@ console.log(new ocs.GQLService().query().select(['id','name']).from('getProduct'
 
 ### Example
 
-```
+```js
 require('graphql-sql');
 
 //your graphql services endpoint

@@ -18,9 +18,9 @@
   },
   "devDependencies": {
     "colors": "^1.3.2"
-  }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/toshilam/graphql-sql.git"
-  },
+  }
 }
