@@ -1,0 +1,21 @@
+{
+  "name": "graphql-sql",
+  "version": "1.0.0",
+  "description": "A mirco library that helps making graphql request in a simple way using sql like style",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "graphql"
+  ],
+  "author": "toshi",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "underscore": "^1.9.1"
+  },
+  "devDependencies": {
+    "colors": "^1.3.2"
+  }
+}
