@@ -1,14 +1,13 @@
 # graphql-sql
 
-## A micro library that helps making graphql request in a simple way using sql like style
-## Please be reminded that use it at your own risk
+## A micro library that helps making graphql request in a simple way using sql like style. Please be reminded that use it at your own risk
 
 ## Installing
 
 Using npm:
 
 ```bash
-$ npm install axios
+$ npm install graphql-sql
 ```
 
 ### Quickstart
