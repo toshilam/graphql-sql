@@ -18,6 +18,7 @@ require('./ocs/data/VO');
 require('./ocs/events/ApplicationEvent');
 require('./ocs/events/ServiceEvent');
 require('./ocs/events/TimerEvent');
+require('./ocs/events/VOEvent');
 
 require('./ocs/net/BaseService');
 require('./ocs/net/ServiceRequest');
