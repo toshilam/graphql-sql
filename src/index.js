@@ -1,35 +1,27 @@
-_ = require('underscore');
-axios = require('axios');
-colors = require('colors/safe');
+var createjs = require('./createjs/');
+var ocs = require('./ocs/');
 
-ocs = {};
-createjs = {};
+require('./createjs/utils/IndexOf');
+require('./createjs/events/Event');
+require('./createjs/events/EventDispatcher');
 
-var classes = [
-	'createjs/events/Event',
-	'createjs/events/EventDispatcher',
-	
-	'ocs/utils/Object',
-	'ocs/utils/Number',
-	'ocs/utils/String',
-	'ocs/utils/Array',
-	'ocs/utils/Timer',
-	'ocs/utils/Tools',
-	'ocs/utils/Tracer',
-	
-	'ocs/data/VO',
-	
-	'ocs/net/BaseService',
-	'ocs/net/ServiceRequest',
-	'ocs/net/HTTPServiceRequest',
-	'ocs/net/GQLService'	
+require('./ocs/utils/Object');
+require('./ocs/utils/Number');
+require('./ocs/utils/String');
+require('./ocs/utils/Array');
+require('./ocs/utils/Timer');
+require('./ocs/utils/Tools');
+require('./ocs/utils/Tracer');
 
-	
-];
+require('./ocs/data/VO');
 
-for (var i = 0; i < classes.length; i++) {
-	var path = classes[i];
-	var name = path.split('/').pop();
-	require('./' + path + '.js');
-};
+require('./ocs/events/ApplicationEvent');
+require('./ocs/events/ServiceEvent');
+require('./ocs/events/TimerEvent');
 
+require('./ocs/net/BaseService');
+require('./ocs/net/ServiceRequest');
+require('./ocs/net/HTTPServiceRequest');
+require('./ocs/net/GQLService');
+
+module.exports = ocs;

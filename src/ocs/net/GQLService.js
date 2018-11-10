@@ -1,3 +1,7 @@
+var _ = require('underscore');
+var createjs = require('../../createjs/');
+var ocs;
+module.exports = ocs = require('../');
 
 const Tracer = ocs.Tracer;
 

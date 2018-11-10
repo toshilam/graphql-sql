@@ -13,7 +13,7 @@ $ npm install graphql-sql
 ### Quickstart
 
 ```js
-require('graphql-sql');
+var ocs = require('graphql-sql');
 
 //your graphql services endpoint
 var endPoint = 'https://www.endpoint.com/graphql';
@@ -43,7 +43,7 @@ console.log(new ocs.GQLService().query().select(['id','name']).from('getProduct'
 ### Example
 
 ```js
-require('graphql-sql');
+var ocs = require('graphql-sql');
 
 //your graphql services endpoint
 var endPoint = 'https://www.endpoint.com/graphql';

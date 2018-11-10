@@ -1,4 +1,3 @@
-//this.ocs = this.ocs || {}; 
 
 (function(){
 	
@@ -26,5 +25,4 @@
 	}
 	
 	
-//ocs.Tools = Tools;
 }());

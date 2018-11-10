@@ -31,8 +31,9 @@
  */
 
 // namespace:
-this.createjs = this.createjs||{};
-
+//this.createjs = this.createjs||{};
+var createjs;
+module.exports = createjs = require('../');
 /**
  * @class Utility Methods
  */

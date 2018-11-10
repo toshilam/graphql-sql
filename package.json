@@ -1,10 +1,11 @@
 {
   "name": "graphql-sql",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A mirco library that helps making graphql request in a simple way using sql like style",
   "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
   },
   "homepage": "https://github.com/toshilam/graphql-sql",
   "keywords": [
@@ -17,7 +18,16 @@
     "underscore": "^1.9.1"
   },
   "devDependencies": {
-    "colors": "^1.3.2"
+    "colors": "^1.3.2",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "webpack": "^3.8.1",
+    "webpack-uglify-js-plugin": "^1.1.9"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,7 @@
-this.ocs = this.ocs || {}; 
+var _ = require('underscore');
+var createjs = require('../../createjs/');
+var ocs;
+module.exports = ocs = require('../');
 
 (function(){
 	
