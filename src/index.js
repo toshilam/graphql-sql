@@ -1,28 +1,28 @@
 var createjs = require('./createjs/');
-var ocs = require('./ocs/');
+var gsql = require('./gsql/');
 
 require('./createjs/utils/IndexOf');
 require('./createjs/events/Event');
 require('./createjs/events/EventDispatcher');
 
-require('./ocs/utils/Object');
-require('./ocs/utils/Number');
-require('./ocs/utils/String');
-require('./ocs/utils/Array');
-require('./ocs/utils/Timer');
-require('./ocs/utils/Tools');
-require('./ocs/utils/Tracer');
+require('./gsql/utils/Object');
+require('./gsql/utils/Number');
+require('./gsql/utils/String');
+require('./gsql/utils/Array');
+require('./gsql/utils/Timer');
+require('./gsql/utils/Tools');
+require('./gsql/utils/Tracer');
 
-require('./ocs/data/VO');
+require('./gsql/data/VO');
 
-require('./ocs/events/ApplicationEvent');
-require('./ocs/events/ServiceEvent');
-require('./ocs/events/TimerEvent');
-require('./ocs/events/VOEvent');
+require('./gsql/events/ApplicationEvent');
+require('./gsql/events/ServiceEvent');
+require('./gsql/events/TimerEvent');
+require('./gsql/events/VOEvent');
 
-require('./ocs/net/BaseService');
-require('./ocs/net/ServiceRequest');
-require('./ocs/net/HTTPServiceRequest');
-require('./ocs/net/GQLService');
+require('./gsql/net/BaseService');
+require('./gsql/net/ServiceRequest');
+require('./gsql/net/HTTPServiceRequest');
+require('./gsql/net/GQLService');
 
-module.exports = ocs;
+module.exports = gsql;
