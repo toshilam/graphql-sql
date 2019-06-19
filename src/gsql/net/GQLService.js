@@ -217,14 +217,14 @@ const Tracer = gsql.Tracer;
 	
 	p._getSelectorStatement = function(arrSelector)
 	{
-		return _.isArray(arrSelector) && arrSelector.length ? arrSelector.map
+		return _.isArray(arrSelector) && arrSelector.length ? "{\n" + arrSelector.map
 		(
 			item=>
 			{
 				return _.isObject(item) ? `${Object.keys(item)[0]}\n{\n${this._getSelectorStatement(item[Object.keys(item)[0]])} \n}` : item;
 			}
 		)
-		.join(',\n') : "";
+		.join(',\n') + "\n}" : "";
 	}
 	
 	p._getConditionStatement = function(objCondition)
@@ -255,9 +255,7 @@ const Tracer = gsql.Tracer;
 		return `${this._type} 
 		{
 			${this._from}${this._getConditionStatement(this._objCondition)}  
-			{
-				${this._getSelectorStatement(this._arrSelector)}
-			}
+			${this._getSelectorStatement(this._arrSelector)}
 		}`;
 		
 	}

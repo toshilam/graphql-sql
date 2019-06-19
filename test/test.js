@@ -3,7 +3,8 @@ const _ = require('underscore');
 const decodeUriComponent = require('decode-uri-component');
 const normalizeNewline = require('normalize-newline');
 
-console.log(new gsql.GQLService().query().select(['id','name',{"product":["pid","pname"]}]).from('getProduct').where({id:1,name:"你好",chareter:"!#$%",boo:true}).toString());
+// console.log(new gsql.GQLService().query().select(['id','name',{"product":["pid","pname"]}]).from('getProduct').where({id:1,name:"你好",chareter:"!#$%",boo:true}).toString());
+console.log(new gsql.GQLService().query().from('getProduct').select(["id"]).toString());
 //console.log(JSON.parse(decodeUriComponent( encodeURIComponent( JSON.stringify({id:1,name:"你好",chareter:"!#$%", array:[1,true, false, "今日天氣好好", "!@#$%^&*()(*&^%$#@!"]}) ) )));
 
 //var vo = new gsql.VO('id');
