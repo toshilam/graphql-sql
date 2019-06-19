@@ -29,7 +29,32 @@ module.exports = gsql = require('../');
 	
 	p.clear = function() 
 	{
-		
+		let keys = Object.keys(this);
+		keys.forEach((k)=>{
+			let type = typeof this[k]
+			switch(type)
+			{
+				case 'string' :
+					this[k] = "";
+					break;
+				case 'number':
+					this[k] = 0;
+					break;
+				case 'object':
+					if(this[k] instanceof Array)
+					{
+						this[k] = [];
+					}
+					else if( this[k] instanceof gsql.VO )
+					{
+						this[k].clear();
+					} 
+					else 
+					{
+						this[k] = {}
+					}
+			}
+		});
 	}
 	
 	p.clone = function() 
