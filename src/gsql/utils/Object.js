@@ -1,4 +1,4 @@
-
+var gsql = require('../');
 (function(){
 	
 	Object.prototype.toObjectString = function()
