@@ -1,5 +1,7 @@
 var createjs = require('./createjs/');
 var gsql = require('./gsql/');
+//attach 3rd parties libs
+gsql._ = require('underscore')
 
 require('./createjs/utils/IndexOf');
 require('./createjs/events/Event');
@@ -24,5 +26,7 @@ require('./gsql/net/BaseService');
 require('./gsql/net/ServiceRequest');
 require('./gsql/net/HTTPServiceRequest');
 require('./gsql/net/GQLService');
+
+
 
 module.exports = gsql;

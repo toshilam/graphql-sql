@@ -1,7 +1,9 @@
 var gsql = require('../src/');
-const _ = require('underscore');
+// const _ = require('underscore');
 const decodeUriComponent = require('decode-uri-component');
 const normalizeNewline = require('normalize-newline');
+
+console.log("test : underscore ", gsql._.isString(""))
 
 // console.log(new gsql.GQLService().query().select(['id','name',{"product":["pid","pname"]}]).from('getProduct').where({id:1,name:"你好",chareter:"!#$%",boo:true}).toString());
 console.log(new gsql.GQLService().query().from('getProduct').select(["id"]).toString());
