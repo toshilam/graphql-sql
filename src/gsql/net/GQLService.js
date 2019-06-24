@@ -215,16 +215,20 @@ const Tracer = gsql.Tracer;
 		
 	}
 	
-	p._getSelectorStatement = function(arrSelector)
+	p._getSelectorStatement = function(arrSelector, level)
 	{
-		return _.isArray(arrSelector) && arrSelector.length ? "{\n" + arrSelector.map
+		numTab = (_.isNumber(level) ? level : 1) +1;
+		let tab = new Array( numTab ).join("\t");
+		let selector = _.isArray(arrSelector) && arrSelector.length ? /* "{\n" +  */arrSelector.map
 		(
 			item=>
 			{
-				return _.isObject(item) ? `${Object.keys(item)[0]}\n{\n${this._getSelectorStatement(item[Object.keys(item)[0]])} \n}` : item;
+				return tab + (_.isObject(item) ? `${Object.keys(item)[0]}\n${tab}{\n${this._getSelectorStatement(item[Object.keys(item)[0]], numTab)} \n${tab}}` : item);
 			}
 		)
-		.join(',\n') + "\n}" : "";
+		.join(',\n') /* + "\n}" */ : "";
+
+		return level == 1 && selector.length ? `${tab}{\n${selector}\n${tab}}`  : selector;
 	}
 	
 	p._getConditionStatement = function(objCondition)
@@ -253,10 +257,10 @@ const Tracer = gsql.Tracer;
 	p.toString = function()
 	{
 		return `${this._type} 
-		{
-			${this._from}${this._getConditionStatement(this._objCondition)}  
-			${this._getSelectorStatement(this._arrSelector)}
-		}`;
+{
+\t${this._from}${this._getConditionStatement(this._objCondition)}  
+${this._getSelectorStatement(this._arrSelector, 1)}
+}`;
 		
 	}
 	
