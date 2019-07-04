@@ -6,8 +6,28 @@ const normalizeNewline = require('normalize-newline');
 console.log("test : underscore ", gsql._.isString(""))
 console.log("test : underscore ", {}.toObjectString())
 
+var fields = [ "id", "id2", {"obj":["objK1","objK2"]} ];
 // console.log(new gsql.GQLService().query().select(['id','name',{"product":["pid","pname"]}]).from('getProduct').where({id:1,name:"你好",chareter:"!#$%",boo:true}).toString());
-console.log(new gsql.GQLService().query().from('getProduct').select([ "id", "id2", {"obj":["objK1","objK2"]} ]).where({"w":1}).toString());
+var gqlService = (new gsql.GQLService())
+gqlService.query().from('ping')//.select(fields).where();
+gqlService.getRequester().defaults.baseURL = process.env['BASE_URL'];
+gqlService.getRequester().defaults.headers.common['Authorization'] = process.env['AUTH_TOKEN'];
+
+console.log(gqlService.toString());
+
+/* gqlService.request
+(
+	new gsql.HTTPServiceRequest
+	(
+		gsql.HTTPServiceRequest.TYPE_POST, 
+		null, 
+		null, 
+		`/dev/userService/graphql`
+	)
+)
+.then(console.log); */
+
+gqlService.post('/dev/userService/user/graphql').then(console.log);
 //console.log(JSON.parse(decodeUriComponent( encodeURIComponent( JSON.stringify({id:1,name:"你好",chareter:"!#$%", array:[1,true, false, "今日天氣好好", "!@#$%^&*()(*&^%$#@!"]}) ) )));
 
 //var vo = new gsql.VO('id');

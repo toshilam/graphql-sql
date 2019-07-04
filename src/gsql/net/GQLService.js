@@ -40,8 +40,13 @@ const Tracer = gsql.Tracer;
 		
 		this._arrSelector = [];
 		this._objCondition = {};
+		this._axiosInstance = axios.create();
 		
-		
+	}
+
+	p.getRequester = function()
+	{
+		return this._axiosInstance;
 	}
 	
 	p.query = function()
@@ -102,11 +107,11 @@ const Tracer = gsql.Tracer;
 		if
 		(
 			!(inRequest instanceof gsql.HTTPServiceRequest) ||
-			!/^(get|post)$/i.test(inRequest.type) ||
+			!/^(post)$/i.test(inRequest.type) ||
 			!gsql.Tools.hasValue(inRequest.host)
 		)
 		{
-			console.log(inRequest, !(inRequest instanceof gsql.HTTPServiceRequest),!/^(get|post)$/i.test(inRequest.type),!gsql.Tools.hasValue(inRequest.host));
+			console.log(inRequest, !(inRequest instanceof gsql.HTTPServiceRequest),!/^(post)$/i.test(inRequest.type),!gsql.Tools.hasValue(inRequest.host));
 			gsql.Tracer.echo('GQLService : request : unknown data object! {0} : {1}'.format([inRequest.type, inRequest.host]), this, gsql.Tracer.TYPE_ERROR);
 			return false;
 		}
@@ -114,27 +119,10 @@ const Tracer = gsql.Tracer;
 		
 		return this._execute(inRequest);
 	}
-	
-	p._execute = function(inRequest)
+
+	p.post = function(url, config)
 	{
-		var instance = axios.create({
-		  baseURL: inRequest.host
-		});
-		
-		//currently only support auth token
-		if(inRequest.data && inRequest.data['Authorization'])
-		{
-			instance.defaults.headers.common['Authorization'] = inRequest.data['Authorization'];	
-		}
-		
-		Tracer.echo('GQLService : _execute : {0} : {1}'.format([inRequest.host, this]), this, Tracer.TYPE_INFO);
-		
-		return axios[inRequest.type]
-		(
-			inRequest.host, 
-			this.toString()
-		)
-		.then(result=>{
+		return this._axiosInstance.post(url, this.toString(), config).then(result=>{
 			
 			if(result && result.data)
 			{
@@ -143,6 +131,24 @@ const Tracer = gsql.Tracer;
 			
 			return result;
 		})
+	}
+	
+	p._execute = function(inRequest)
+	{
+		//currently only support auth token
+		if(inRequest.data && inRequest.data['Authorization'])
+		{
+			this._axiosInstance.defaults.headers.common['Authorization'] = inRequest.data['Authorization'];	
+		}
+		
+		Tracer.echo('GQLService : _execute : {0} : {1}'.format([inRequest.host, this]), this, Tracer.TYPE_INFO);
+		
+		//NOTE : currently only support post
+		return this.post
+		(
+			inRequest.host, 
+			inRequest.data
+		);
 	}
 	
 	p._decodeUriComponent = function(data)
