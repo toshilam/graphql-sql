@@ -1,6 +1,6 @@
 # graphql-sql
 
-## A micro library that helps making graphql request in a simple way using sql like style. Please be reminded that use it at your own risk
+## A micro library that helps making graphql request in a simple way using sql like style.
 
 ## Installing
 
@@ -38,6 +38,20 @@ console.log(new ocs.GQLService().query().select(['id','name']).from('getProduct'
 // 		name
 // 	}
 // }
+```
+
+### Creating an instance
+creating a new instance with a custom config
+more info about config please refer to : [https://www.npmjs.com/package/axios#request-config](https://www.npmjs.com/package/axios#request-config)
+```js
+require('graphql-sql');
+
+var gqlService = (new gsql.GQLService())
+
+gqlService.getRequester().defaults.baseURL = 'BASE_URL';
+gqlService.getRequester().defaults.headers.common['Authorization'] = 'AUTH_TOKEN';
+
+gqlService.query().select(['id','name']).from('getProduct').where({id:1}).post('/path/to/request').then(console.log);
 ```
 
 ### Example
