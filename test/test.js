@@ -3,17 +3,15 @@ var gsql = require('../src/');
 const decodeUriComponent = require('decode-uri-component');
 const normalizeNewline = require('normalize-newline');
 
-console.log("test : underscore ", gsql._.isString(""))
-console.log("test : underscore ", {}.toObjectString())
 
-var fields = [ "id", "id2", {"obj":["objK1","objK2"]} ];
-// console.log(new gsql.GQLService().query().select(['id','name',{"product":["pid","pname"]}]).from('getProduct').where({id:1,name:"你好",chareter:"!#$%",boo:true}).toString());
+// var fields = [ "id:id2", "id2", {"obj":["objK1","objK2"]} ];
+// console.log(new gsql.GQLService().query().select(['id:id2','name',{"product":["pid","pname"]}]).from('getProduct').where({id:1,name:"你好",chareter:"!#$%",boo:true}).toString());
 var gqlService = (new gsql.GQLService())
-gqlService.query().from('ping')//.select(fields).where();
-gqlService.getRequester().defaults.baseURL = process.env['BASE_URL'];
-gqlService.getRequester().defaults.headers.common['Authorization'] = process.env['AUTH_TOKEN'];
+gqlService.query().from('ppp:ping')//.select(fields).where();
+gqlService.getRequester().defaults.baseURL = 'https://ailtgpf4sh.execute-api.ap-southeast-1.amazonaws.com';
+// gqlService.getRequester().defaults.headers.common['Authorization'] = process.env['AUTH_TOKEN'];
 
-console.log(gqlService.toString());
+// console.log(gqlService.toString());
 
 /* gqlService.request
 (
@@ -27,7 +25,7 @@ console.log(gqlService.toString());
 )
 .then(console.log); */
 
-gqlService.post('/dev/userService/user/graphql').then(console.log);
+gqlService.post('/dev/userService/graphql').then(console.log).catch(console.error)
 //console.log(JSON.parse(decodeUriComponent( encodeURIComponent( JSON.stringify({id:1,name:"你好",chareter:"!#$%", array:[1,true, false, "今日天氣好好", "!@#$%^&*()(*&^%$#@!"]}) ) )));
 
 //var vo = new gsql.VO('id');
